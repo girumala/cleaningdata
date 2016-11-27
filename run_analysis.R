@@ -37,9 +37,7 @@ run_analyis <- function()
         #bring subject, activity and features into one dataset
                   testdataset <- cbind(testsubject, activityname = testactivity$activityname, testfeaturesrefined)
         
-        head(testdataset, 2)
-        dim(testdataset)
-              
+
  #Train data
         #Read Subject, Activity and Features
         
@@ -68,8 +66,7 @@ run_analyis <- function()
         #bring subject, activity and features into one dataset
         traindataset <- cbind(trainsubject, activityname = trainactivity$activityname, trainfeaturesrefined)
         
-        head(traindataset, 2)
-        dim(traindataset)
+
  #Join "Test" and "Train" datasets vertically
         
         totaldata <- rbind(testdataset, traindataset)
@@ -156,8 +153,7 @@ run_analyis <- function()
                                 "Body Body Gyro Jerk Mag Standard Deviation (Frequency Domain)",
                                 "Body Body Gyro Jerk Mag MeanFrequency (Frequency Domain)")
         
-        head(totaldata, 2)
-        colnames(totaldata)
+
 #Create a dataset group by subject, activity( calculate mean for each of the columns)
         finaldataset <- group_by(totaldata, subject, activityname) %>% summarise_each(funs(mean)) 
         finaldataset
